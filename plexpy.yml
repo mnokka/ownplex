@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  plexpy:
+    image: linuxserver/plexpy
+    container_name: plexpy
+    restart: always
+    ports:
+      - "8181:8181"
+    environment:
+      - PGID=100
+      - PUID=1000
+    volumes:
+      - /mnt/sda1/plexpyconfig:/config
+      - /mnt/sda1/plexpylogs:/logs:ro

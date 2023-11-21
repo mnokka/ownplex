@@ -1,0 +1,19 @@
+#https://hub.docker.com/r/linuxserver/heimdall
+
+#sudo docker-compose -f heimdall.yml up
+
+version: "2.1"
+services:
+  heimdall:
+    image: lscr.io/linuxserver/heimdall:latest
+    container_name: heimdall
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /mnt/sda1/plexpyconfig:/config
+    ports:
+      - 82:80
+      - 445:443
+    restart: unless-stopped
